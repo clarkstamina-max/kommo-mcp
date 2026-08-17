@@ -13,7 +13,7 @@ export function registerAgencyTools(server: McpServer) {
         // Vasculha as variáveis de ambiente procurando pelo padrão KOMMO_*_DOMAIN
         for (const key in process.env) {
           if (key.startsWith("KOMMO_") && key.endsWith("_DOMAIN")) {
-            // Extrai o slug do meio. Ex: KOMMO_CASA_DESPERTAR_DOMAIN -> CASA_DESPERTAR -> casa_despertar
+            // Extrai o slug do meio. Ex: KOMMO_CLIENTE_ALFA_DOMAIN -> CLIENTE_ALFA -> cliente_alfa
             const slug = key.replace("KOMMO_", "").replace("_DOMAIN", "").toLowerCase();
             clients.push(slug);
           }

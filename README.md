@@ -1,6 +1,6 @@
 # Kommo CRM MCP Server
 
-Servidor MCP (Model Context Protocol) centralizado para a agência Stamina Digital.
+Servidor MCP (Model Context Protocol) centralizado para a agência.
 Atende múltiplos clientes (multi-tenancy) via variáveis de ambiente da VPS.
 
 ---
@@ -12,7 +12,7 @@ A forma de conectar o servidor depende de qual interface sua equipe usa:
 ### Opção 1: Antigravity (Local)
 Se você estiver utilizando o Antigravity, você não precisa configurar arquivos manualmente. Basta enviar a seguinte mensagem no chat para a Inteligência Artificial:
 
-> "Instala esse servidor MCP pra mim: https://kommo-mcp.stamina.digital/sse"
+> "Instala esse servidor MCP pra mim: https://kommo-mcp.agencia-exemplo.com/sse"
 
 A própria IA vai alterar o arquivo de configuração dela e se conectar automaticamente à VPS. Você saberá que funcionou quando ela confirmar.
 
@@ -21,7 +21,7 @@ A própria IA vai alterar o arquivo de configuração dela e se conectar automat
 2. Clique em **Conectores**.
 3. Selecione **Adicionar** -> **Adicionar conector personalizado**.
 4. Cole apenas a URL limpa do nosso servidor:
-**`https://kommo-mcp.stamina.digital/sse`**
+**`https://kommo-mcp.agencia-exemplo.com/sse`**
 
 ---
 
@@ -35,12 +35,12 @@ A IA descobre dinamicamente qual cliente acessar baseado no `client_slug`.
 3. Adicione o domínio e o token do cliente novo usando o padrão `KOMMO_<SLUG>_DOMAIN` e `KOMMO_<SLUG>_TOKEN`.
    *(Atenção: Use sempre letras MAIÚSCULAS para criar a variável, sem espaços).*
 
-**Exemplo prático para o cliente "Casa Despertar":**
+**Exemplo prático para o cliente "Cliente Alfa":**
 ```env
-KOMMO_CASA_DESPERTAR_DOMAIN=jorge3mktdigitalcombr.kommo.com
-KOMMO_CASA_DESPERTAR_TOKEN=eyJhbGci...
+KOMMO_CLIENTE_ALFA_DOMAIN=clientealfa.kommo.com
+KOMMO_CLIENTE_ALFA_TOKEN=eyJhbGci...
 ```
-*(O slug gerado para a IA será: `casa_despertar`)*
+*(O slug gerado para a IA será: `cliente_alfa`)*
 
 4. Salve as variáveis e clique em **Deploy**.
-5. Pronto! Você não precisa avisar a equipe para configurar nada. A partir desse segundo eles já podem pedir para a IA: *"Veja as tarefas atrasadas da casa_despertar"*.
+5. Pronto! Você não precisa avisar a equipe para configurar nada. A partir desse segundo eles já podem pedir para a IA: *"Veja as tarefas atrasadas do cliente_alfa"*.

@@ -19,6 +19,7 @@ import { registerWebhookTools } from "./tools/webhooks.js";
 import { registerEventTools } from "./tools/events.js";
 import { registerAgencyTools } from "./tools/agency.js";
 import { registerCatalogTools } from "./tools/catalogs.js";
+import { registerUserTools } from "./tools/users.js";
 
 dotenv.config();
 
@@ -44,6 +45,7 @@ registerSalesbotTools(server);
 registerWebhookTools(server);
 registerEventTools(server);
 registerCatalogTools(server);
+registerUserTools(server);
 
 // Configuração do Express para o Easypanel (SSE)
 const app = express();

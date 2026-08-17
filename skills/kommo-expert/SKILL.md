@@ -76,6 +76,8 @@ A Kommo possui dois ecossistemas de templates completamente distintos. Um erro a
 1. **A Linha do Tempo (Timeline):** Se o usuário solicitar uma auditoria (ex: *"Por que esse lead travou?"* ou *"Quem mudou o status dele?"*), use a ferramenta `get_events` passando o ID do Lead. A lista de eventos é a fonte absoluta da verdade.
 2. **Automações (Webhooks e Salesbots):** Ao configurar webhooks para integrações externas da agência (ex: N8N, Make), certifique-se de listar primeiro os webhooks existentes (`get_webhooks`) para evitar a criação de rotas duplicadas. 
 
+---
+
 ## 5. Produtos, Catálogos e Listas
 
 A Kommo chama seus bancos de dados personalizados de **Lists** (Listas) na interface gráfica, mas na API e nas ferramentas eles são chamados de **Catalogs** (Catálogos). Os itens dentro dessas listas (como Produtos) são chamados de **Elements** (Elementos).
@@ -84,3 +86,11 @@ Se o usuário pedir algo como *"adicione esse produto"* ou *"liste os produtos"*
 1. Use a ferramenta `get_catalogs` para descobrir qual é o `catalog_id` correto daquele cliente (geralmente há um catálogo chamado "Produtos").
 2. Para pesquisar um produto específico, use `get_catalog_elements` passando o ID do catálogo e o texto da busca no parâmetro `query`.
 3. Para cadastrar um produto novo, use `create_catalog_elements`. Note que o preço, SKU e descrição do produto são salvos dentro do array `custom_fields_values`. Antes de cadastrar um produto cego, use `get_catalog_by_id` para ver a lista de `custom_fields` daquele catálogo e descobrir o ID do campo Preço.
+
+---
+
+## 6. Gestão de Equipe (Users & Roles)
+
+Para atribuir um Lead, Contato ou Tarefa a um vendedor específico, você precisa do `responsible_user_id`. 
+1. Use a ferramenta `get_users` para encontrar o ID correto do vendedor pelo nome ou email.
+2. Para verificar se o usuário tem permissão de gerência, ou para cadastrar novos usuários (`add_users`), sempre consulte a lista de perfis usando `get_roles` para garantir que você está passando o `role_id` correto (ex: Perfil de Vendedor, Perfil de Gerente).

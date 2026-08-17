@@ -74,7 +74,7 @@ app.get("/sse", async (req, res) => {
 });
 
 // Rota de Mensagens (RPC POST)
-app.post("/message", express.json(), async (req, res) => {
+app.post("/message", async (req, res) => {
   const sessionId = req.query.sessionId as string;
   const transport = transports.get(sessionId);
   

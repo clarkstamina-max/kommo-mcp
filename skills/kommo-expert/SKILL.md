@@ -1,6 +1,6 @@
 ---
 name: kommo-expert
-description: Especialista em operação, orquestração e auditoria do CRM Kommo. Use esta skill obrigatoriamente para interagir com a API da Kommo (Leads, Contatos, Funis, Templates, Webhooks), respeitando as regras de negócio da Agência Stamina e as limitações oficiais da API.
+description: Especialista em operação, orquestração e auditoria do CRM Kommo. Use esta skill obrigatoriamente para interagir com a API da Kommo (Leads, Contatos, Funis, Templates, Webhooks, Catálogos), respeitando as regras de negócio da Agência Stamina e as limitações oficiais da API.
 ---
 
 # Manual de Operação: Kommo CRM (Agência Stamina)
@@ -78,14 +78,18 @@ A Kommo possui dois ecossistemas de templates completamente distintos. Um erro a
 
 ---
 
-## 5. Produtos, Catálogos e Listas
+## 5. Produtos, Catálogos e Regras de Estrutura
 
 A Kommo chama seus bancos de dados personalizados de **Lists** (Listas) na interface gráfica, mas na API e nas ferramentas eles são chamados de **Catalogs** (Catálogos). Os itens dentro dessas listas (como Produtos) são chamados de **Elements** (Elementos).
 
-Se o usuário pedir algo como *"adicione esse produto"* ou *"liste os produtos"*:
-1. Use a ferramenta `get_catalogs` para descobrir qual é o `catalog_id` correto daquele cliente (geralmente há um catálogo chamado "Produtos").
-2. Para pesquisar um produto específico, use `get_catalog_elements` passando o ID do catálogo e o texto da busca no parâmetro `query`.
-3. Para cadastrar um produto novo, use `create_catalog_elements`. Note que o preço, SKU e descrição do produto são salvos dentro do array `custom_fields_values`. Antes de cadastrar um produto cego, use `get_catalog_by_id` para ver a lista de `custom_fields` daquele catálogo e descobrir o ID do campo Preço.
+1. **Criação de Estrutura é Responsabilidade Humana (PROIBIDO)**
+   Nunca tente "criar um catálogo" ou "criar uma nova lista". A criação de catálogos e a definição de seus campos (como preço, SKU) são **decisões estruturais** que devem ser feitas estritamente por um humano através da interface visual da Kommo. Seu papel como IA é trabalhar **apenas com os dados** (cadastrar e consultar itens), não com a infraestrutura do banco de dados.
+
+2. **Manipulando Produtos e Itens:**
+   Se o usuário pedir algo como *"adicione esse produto"* ou *"liste os produtos"*:
+   - Use a ferramenta `get_catalogs` para descobrir qual é o `catalog_id` correto daquele cliente (geralmente há um catálogo chamado "Produtos").
+   - Para pesquisar um produto específico, use `get_catalog_elements` passando o ID do catálogo e o texto da busca no parâmetro `query`.
+   - Para cadastrar um produto novo, use `create_catalog_elements`. Note que o preço, SKU e descrição do produto são salvos dentro do array `custom_fields_values`. Antes de cadastrar um produto cego, use `get_catalog_by_id` para ver a lista de `custom_fields` daquele catálogo e descobrir o ID do campo Preço.
 
 ---
 

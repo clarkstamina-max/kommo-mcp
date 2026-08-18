@@ -33,7 +33,9 @@ const transports = new Map<string, SSEServerTransport>();
 
 // Rota de Conexão SSE
 app.get("/sse", async (req, res) => {
-  const transport = new SSEServerTransport("/message", res);
+  console.log(`[GET /sse] Nova conexão iniciada.`);
+  const messageUrl = "https://kommo-mcp.stamina.digital/message";
+  const transport = new SSEServerTransport(messageUrl, res);
   
   // Cria uma nova instância de servidor MCP EXCLUSIVA para essa conexão
   const server = new McpServer({
@@ -76,9 +78,12 @@ app.get("/sse", async (req, res) => {
 // Rota de Mensagens (RPC POST)
 app.post("/message", async (req, res) => {
   const sessionId = req.query.sessionId as string;
+  console.log(`[POST /message] Requisição recebida. SessionID: '${sessionId}'`);
+  
   const transport = transports.get(sessionId);
   
   if (!transport) {
+    console.log(`[POST /message] ERRO: Sessão '${sessionId}' não encontrada no Map. Total de sessões ativas: ${transports.size}`);
     res.status(404).send("Sessão SSE não encontrada.");
     return;
   }

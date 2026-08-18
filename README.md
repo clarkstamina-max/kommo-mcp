@@ -10,11 +10,11 @@ Atende múltiplos clientes (multi-tenancy) via variáveis de ambiente da VPS.
 A forma de conectar o servidor depende de qual interface sua equipe usa:
 
 ### Opção 1: Antigravity (Local)
-Se você estiver utilizando o Antigravity, você não precisa configurar arquivos manualmente. Basta enviar a seguinte mensagem no chat para a Inteligência Artificial:
+Se você estiver utilizando o Antigravity, você não precisa configurar arquivos JSON manualmente. Basta copiar o texto abaixo e enviar no chat da sua Inteligência Artificial:
 
-> "Instala esse servidor MCP pra mim: https://kommo-mcp.agencia-exemplo.com/sse"
+> "Configure um novo servidor MCP para mim editando meu arquivo mcp_config.json. O nome do servidor deve ser `kommo-mcp`. O comando deve ser `cmd.exe` (ou apenas `npx` se você estiver no Mac/Linux), e os argumentos devem ser exatamente a string: `npx -y @cloudmcp/connect https://kommo-mcp.agencia-exemplo.com/sse`. Avise quando terminar."
 
-A própria IA vai alterar o arquivo de configuração dela e se conectar automaticamente à VPS. Você saberá que funcionou quando ela confirmar.
+A própria IA vai baixar o adaptador oficial da comunidade e se conectar à VPS invisivelmente. Dê um **Reload Window** quando ela confirmar.
 
 ### Opção 2: Claude Web
 1. Vá no menu **Personalizar**.

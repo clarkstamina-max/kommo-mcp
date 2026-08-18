@@ -93,7 +93,12 @@ app.post("/message", async (req, res) => {
 
 // Endpoint de Healthcheck pro Easypanel
 app.get("/health", (req, res) => {
-  res.json({ status: "ok", version: "2.0.1" });
+  res.json({ status: "ok", version: "2.0.2" });
+});
+
+// Endpoint para baixar o script de ponte standalone
+app.get("/bridge.mjs", (req, res) => {
+  res.sendFile(process.cwd() + "/dist/bridge/index.mjs");
 });
 
 app.listen(PORT, () => {
